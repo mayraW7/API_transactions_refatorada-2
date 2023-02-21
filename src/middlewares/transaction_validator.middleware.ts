@@ -13,10 +13,10 @@ export class TransactionValidMiddleware {
             return RequestError.fieldNotProvided(res,"Title not provided.");
         }
         if(!value){
-            return RequestError.fieldNotProvided(res,"Title not provided.");
+            return RequestError.fieldNotProvided(res,"Value not provided.");
         }
         if(!type){
-            return RequestError.fieldNotProvided(res,"Title not provided.");
+            return RequestError.fieldNotProvided(res,"Type not provided.");
         }
         if(type !== 'income' && type !== 'outcome'){
             return RequestError.invalid(res, "Type value")

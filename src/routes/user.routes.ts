@@ -45,6 +45,10 @@ app.put("/:userId/transactions/:id", new TransactionsController().update
 //DELETE http://localhost:7007/users/:userId/transactions/:id -> Esta rota permite deletar a transação, é necessário informar os IDs via route params.
 app.delete("/:userId/transactions/:id", new TransactionsController().delete);
 //                          -------
+
+app.post("/login", new UserController().loginUser);
+
+
 return app;
 
 };

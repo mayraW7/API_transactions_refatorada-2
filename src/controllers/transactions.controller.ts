@@ -54,7 +54,7 @@ export class TransactionsController {
             if(!user){
                 return RequestError.notFound(res, "User");
             }
-            const alltransactions = user.transactions;
+            const alltransactions = user.transactions || [];
 
             if(title){
                 let filterTitle = alltransactions.filter((transaction)=> transaction.title === title);

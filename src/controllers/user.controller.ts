@@ -11,9 +11,9 @@ export class UserController {
     public includeUser(req: Request, res: Response) {
         try{  
 
-        const { name, cpf, email, age } = req.body;
+        const { name, cpf, email, age, password } = req.body;
      
-        const user = new User(name,cpf,email,age);
+        const user = new User(name,cpf,email,age,password);
 
         usersList.push(user);
 
@@ -71,5 +71,22 @@ export class UserController {
             return ServerError.genericError(res, error);     
         };
         }
-}
+    public loginUser (req: Request, res: Response){
+        try{
+            const {cpf, password } = req.body;
 
+            if (!cpf || !password){
+                return RequestError.fieldNotProvided(res, "CPF or Password");
+            }
+
+        const user = usersList.find((user)=> user.cpf && user.password);
+            if(!user){
+                return RequestError.invalidAccess(res, "Credentials");
+            }
+            return SuccessResponse.success(res, "Login successfully done.", user.toJson());
+
+        }catch(error: any) {
+            return ServerError.genericError(res, error);
+        }
+    }
+};

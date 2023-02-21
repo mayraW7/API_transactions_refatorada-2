@@ -21,4 +21,10 @@ export class RequestError {
             message: field + " is invalid.",
         });
     }
+    public static invalidAccess(res: Response, field: string){
+        return res.status(401).send({
+            ok:false,
+            message: field + " is invalid.",
+        });
+    }
 }
