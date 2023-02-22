@@ -77,11 +77,15 @@ export class TransactionsController {
             let totall = incomes - outcomes;
 
             return res.status(200).send({
+                ok: true,
+                message: "Transactions successfully listed",
+                data:{
                 "transactions": alltransactions,
                 "balance": {
                     "income": incomes,
                     "outcome":outcomes,
                     "total": totall
+                }
                 }
             });
 
@@ -134,6 +138,7 @@ export class TransactionsController {
             return res.status(200).send({
                 ok: true,
                 message: `Transaction was successfully deleted!`,
+                data: id,
             });
 
     }catch (error: any) {
